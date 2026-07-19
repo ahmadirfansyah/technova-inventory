@@ -59,7 +59,7 @@ pipeline {
                 withCredentials([string(credentialsId: 'sonar-token', variable: 'SONAR_TOKEN')]) {
                     sh '''
                         sonar-scanner \
-                          -Dsonar.host.url=http://localhost:9000 \
+                          -Dsonar.host.url=http://host.docker.internal:9000 \
                           -Dsonar.login=$SONAR_TOKEN
                     '''
                 }

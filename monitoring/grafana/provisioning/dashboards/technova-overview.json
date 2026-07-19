@@ -1,0 +1,36 @@
+{
+  "title": "TechNova Inventory - Overview",
+  "timezone": "browser",
+  "panels": [
+    {
+      "id": 1,
+      "title": "HTTP Requests per Service",
+      "type": "timeseries",
+      "gridPos": { "h": 8, "w": 12, "x": 0, "y": 0 },
+      "targets": [
+        {
+          "expr": "sum(rate(inventory_service_http_requests_total[1m])) by (endpoint)",
+          "legendFormat": "inventory - {{endpoint}}"
+        },
+        {
+          "expr": "sum(rate(order_service_http_requests_total[1m])) by (endpoint)",
+          "legendFormat": "order - {{endpoint}}"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "title": "Orders by Status",
+      "type": "timeseries",
+      "gridPos": { "h": 8, "w": 12, "x": 12, "y": 0 },
+      "targets": [
+        {
+          "expr": "sum(order_service_orders_total) by (status)",
+          "legendFormat": "{{status}}"
+        }
+      ]
+    }
+  ],
+  "schemaVersion": 39,
+  "version": 1
+}
